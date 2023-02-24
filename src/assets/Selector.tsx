@@ -31,6 +31,7 @@ export default function Selector(props: selectorProp) {
       );
 
       const data = await response.json();
+      console.log(data);
 
       const song = data.tracks[0].name;
 
