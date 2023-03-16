@@ -28,7 +28,9 @@ export default function NavBar(props: {
         {!hasToken && (
           <a
             className='link  text-accent navbar-center'
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
+              REDIRECT_URI
+            )}&response_type=${RESPONSE_TYPE}`}
           >
             Sign in to Spotify
           </a>
