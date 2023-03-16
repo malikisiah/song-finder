@@ -4,7 +4,7 @@ export default function NavBar(props: {
   updateToken: (token: string) => void;
 }) {
   const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
-  const REDIRECT_URI = "https://mysongfinder.netlify.app/";
+  const REDIRECT_URI = "http://localhost:5174/"; // https://mysongfinder.netlify.app/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
 
@@ -13,7 +13,6 @@ export default function NavBar(props: {
   useEffect(() => {
     if (hasToken) {
       const token = window.location.hash.split("=")[1];
-      console.log(token);
       props.updateToken(token);
     }
   }, [hasToken, props]);

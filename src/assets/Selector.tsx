@@ -9,6 +9,8 @@ type selectorProp = {
 export default function Selector(props: selectorProp) {
   const [genre, setGenre] = useState<string>("");
 
+  const name = "2DzRMyWgjuMbYvt5BLbpCo";
+
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     setGenre(event.target.value);
   };
@@ -21,8 +23,9 @@ export default function Selector(props: selectorProp) {
     } else if (genre == "") {
       alert("Please select a genre");
     } else {
+      console.log(genre);
       const response = await fetch(
-        `https://api.spotify.com/v1/recommendations?limit=1&market=US&seed_genres=${genre}`,
+        `https://api.spotify.com/v1/recommendations?limit=1&market=US&seed_artists=${name}&seed_genres=${genre}`,
         {
           headers: {
             Authorization: `Bearer ${props.token}`,
@@ -30,6 +33,12 @@ export default function Selector(props: selectorProp) {
         }
       );
 
+      if (!response.ok) {
+        console.log(`API call failed with status ${response.status}`);
+        return;
+      }
+
+      console.log("Fetching Data...");
       const data = await response.json();
       console.log(data);
 
