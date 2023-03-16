@@ -13,6 +13,7 @@ export default function NavBar(props: {
   useEffect(() => {
     if (hasToken) {
       const token = window.location.hash.split("=")[1];
+      console.log(token);
       props.updateToken(token);
     }
   }, [hasToken, props]);
