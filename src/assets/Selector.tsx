@@ -6,10 +6,25 @@ type selectorProp = {
   updateSongInfo: ({}: songInfo) => void;
 };
 
+const findArtist = (genre: string) => {
+  switch (genre) {
+    case "r-n-b":
+      return "2DzRMyWgjuMbYvt5BLbpCo";
+    case "hip-hop":
+      return "3TVXtAsR1Inumwj472S9r4";
+    case "classical":
+      return "2wOqMjp9TyABvtHdOSOTUS";
+    case "electronic":
+      return "7CajNmpbOovFoOoasH2HaY";
+    case "reggae":
+      return "3Z2jmNAP2UaGa8lPpi54wD";
+  }
+};
+
 export default function Selector(props: selectorProp) {
   const [genre, setGenre] = useState<string>("");
 
-  const name = "2DzRMyWgjuMbYvt5BLbpCo";
+  const name = findArtist(genre);
 
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     setGenre(event.target.value);
