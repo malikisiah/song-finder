@@ -1,4 +1,4 @@
-Check out the app here --> https://mysongfinder.netlify.app/
+Check out the app here → https://mysongfinder.netlify.app/
 
 This app allows the user to select a genre to find a song to search for. It leverages the spotify Web API and does require you to be signed into a spotify account.
 
