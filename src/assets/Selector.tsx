@@ -6,25 +6,8 @@ type selectorProp = {
   updateSongInfo: ({}: songInfo) => void;
 };
 
-const findArtist = (genre: string) => {
-  switch (genre) {
-    case "r-n-b":
-      return "2DzRMyWgjuMbYvt5BLbpCo";
-    case "hip-hop":
-      return "3TVXtAsR1Inumwj472S9r4";
-    case "classical":
-      return "2wOqMjp9TyABvtHdOSOTUS";
-    case "electronic":
-      return "7CajNmpbOovFoOoasH2HaY";
-    case "reggae":
-      return "3Z2jmNAP2UaGa8lPpi54wD";
-  }
-};
-
 export default function Selector(props: selectorProp) {
   const [genre, setGenre] = useState<string>("");
-
-  const name = findArtist(genre);
 
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     setGenre(event.target.value);
@@ -40,7 +23,7 @@ export default function Selector(props: selectorProp) {
     } else {
       console.log(genre);
       const response = await fetch(
-        `https://api.spotify.com/v1/recommendations?limit=1&market=US&seed_artists=${name}&seed_genres=${genre}`,
+        `https://api.spotify.com/v1/recommendations?limit=1&market=US&seed_genres=${genre}`,
         {
           headers: {
             Authorization: `Bearer ${props.token}`,
